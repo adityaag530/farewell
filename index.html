@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Special Thanks</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a2a6c 0%, #2a5298 100%);
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      max-width: 500px;
+      animation: fadeIn 1.2s ease-in-out;
+      z-index: 2;
+      position: relative;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    button {
+      background: #fff;
+      color: #2a5298;
+      font-weight: 600;
+      padding: 12px 25px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s ease, background 0.3s ease;
+      margin-bottom: 20px;
+    }
+    button:hover {
+      background: #f1f1f1;
+      transform: scale(1.05);
+    }
+    .reveal {
+      display: none;
+      margin-top: 25px;
+      font-size: 18px;
+      line-height: 1.6;
+      animation: pop 0.6s ease forwards;
+    }
+    .contact-info {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 15px;
+    }
+    .contact-info a {
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+      display: inline-block;
+      margin: 5px 0;
+    }
+    .contact-info a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+  <div class="card">
+    <h1>A Special Thank You</h1>
+    <p>It has been a pleasure working with each of you. I wanted to express my sincere gratitude for the support and collaboration during my time here.</p>
+    <button id="btn">View My Message</button>
+    <div id="msg" class="reveal">
+      To everyone - thank you for the knowledge sharing, support, and memorable experiences. I've genuinely valued my time working with this team.
+      <br><br>
+      Wishing you all continued success!
+      <br><br>
+      - Aditya Kumar Gupta
+    </div>
+    <div class="contact-info">
+      Let's stay connected:<br>
+      <a href="https://www.linkedin.com/in/aditya530/" target="_blank">LinkedIn</a> | 
+      <a href="mailto:agaditya530@gmail.com">Email</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    document.getElementById('btn').addEventListener('click', function () {
+      document.getElementById('msg').style.display = 'block';
+      this.style.display = 'none';
+      
+      // Fire confetti burst
+      var end = Date.now() + 1000;
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 }
+        });
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 }
+        });
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    });
+  </script>
+</body>
+</html>
